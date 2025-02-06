@@ -84,7 +84,7 @@ function isDigitsSum(num) {
 }
 
 app.get("/api/classify-number", async (req, res) => {
-  // try {
+  try {
   const { number } = req.query
 
   if (!number) {
@@ -129,15 +129,15 @@ app.get("/api/classify-number", async (req, res) => {
     digit_sum: isDigitsSum(number),
     fun_fact: funFact,
   })
-  // } catch (error) {
-  //   res.status(500).json({
-  //     error: "Internal Server Error...",
-  //   })
-  // }
+  } catch (error) {
+    res.status(500).json({
+      error: "Internal Server Error...",
+    })
+  }
 })
 
-// app.listen(SERVER_PORT, () => {
-//   console.log(`[server]: App listening on port: ${SERVER_PORT}`)
-// })
+app.listen(SERVER_PORT, () => {
+  console.log(`[server]: App listening on port: ${SERVER_PORT}`)
+})
 
 export default app
