@@ -87,13 +87,13 @@ app.get("/api/classify-number", async (req, res) => {
   try {
     const { number } = req.query
 
-    // if (!number) {
-    //   return res.status(400).json({
-    //     number: null,
-    //     error: true,
-    //     message: "You have not provided any number...",
-    //   })
-    // }
+    if (!number) {
+      return res.status(400).json({
+        number: "",
+        error: true,
+        // message: "You have not provided any number...",
+      })
+    }
 
     if (isNaN(Number(number))) {
       return res.status(400).json({
