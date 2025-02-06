@@ -144,6 +144,8 @@ app.get("/api/classify-number", async (req, res) => {
   }
 })
 
-app.listen(SERVER_PORT, () => {
-  console.log(`[server]: App listening on port: ${SERVER_PORT}`)
-})
+// app.listen(SERVER_PORT, () => {
+//   console.log(`[server]: App listening on port: ${SERVER_PORT}`)
+// })
+
+export default app
