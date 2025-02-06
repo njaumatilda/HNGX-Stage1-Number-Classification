@@ -56,7 +56,7 @@ Here is the reference on the usage of the API:
 
 ## Deployment
 The API has been deployed to a publicly accessible endpoint on Vercel:
-[Live URL](https://hng-12-backend-development-internship.vercel.app/)
+[Live URL](https://hngx-stage1-number-classification-matilda-njaus-projects.vercel.app/api/classify-number)
 
 ## Author
 [Matilda Njau](https://github.com/njaumatilda) 
