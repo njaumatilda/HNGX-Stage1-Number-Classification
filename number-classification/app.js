@@ -89,7 +89,7 @@ app.get("/api/classify-number", async (req, res) => {
 
     if (!number) {
       return res.status(400).json({
-        number: null,
+        number: "",
         error: true,
         // message: "You have not provided any number...",
       })
