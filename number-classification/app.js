@@ -25,12 +25,18 @@ function isPrime(num) {
   return true
 }
 
-// a number whose divisors add up to the number
+// a number whose divisors(excluding itself) add up to
+// the number
 function isPerfect(num) {
   // converts the value of the query param to a number
   // since it's a string
   // for proper comparison of types at the last return
   num = Number(num)
+
+  if (num === 0) {
+    return false
+  }
+
   let sum = 0 // checks for the sum of divisors
 
   for (let i = 1; i <= num / 2; i++) {
@@ -85,50 +91,50 @@ function isDigitsSum(num) {
 
 app.get("/api/classify-number", async (req, res) => {
   try {
-  const { number } = req.query
+    const { number } = req.query
 
-  if (!number) {
-    return res.status(400).json({
-      // number: "",
-      error: true,
-      // message: "You have not provided any number...",
-    })
-  }
+    if (!number) {
+      return res.status(400).json({
+        // number: "",
+        error: true,
+        // message: "You have not provided any number...",
+      })
+    }
 
-  if (isNaN(Number(number))) {
-    return res.status(400).json({
+    if (isNaN(Number(number))) {
+      return res.status(400).json({
+        number: number,
+        error: true,
+        // message: "Please provide a valid number...",
+      })
+    }
+
+    const armStrong = isArmStrong(number)
+    const odd = isOdd(number)
+    const even = isEven(number)
+    let properties = []
+
+    if (armStrong && odd) {
+      properties = ["armstrong", "odd"]
+    } else if (armStrong && even) {
+      properties = ["armstrong", "even"]
+    } else if (odd) {
+      properties = ["odd"]
+    } else if (even) {
+      properties = ["even"]
+    }
+
+    const response = await fetch(`http://numbersapi.com/${Number(number)}/math`)
+    const funFact = await response.text()
+
+    res.status(200).json({
       number: number,
-      error: true,
-      // message: "Please provide a valid number...",
+      is_prime: isPrime(number),
+      is_perfect: isPerfect(number),
+      properties: properties,
+      digit_sum: isDigitsSum(number),
+      fun_fact: funFact,
     })
-  }
-
-  const armStrong = isArmStrong(number)
-  const odd = isOdd(number)
-  const even = isEven(number)
-  let properties = []
-
-  if (armStrong && odd) {
-    properties = ["armstrong", "odd"]
-  } else if (armStrong && even) {
-    properties = ["armstrong", "even"]
-  } else if (odd) {
-    properties = ["odd"]
-  } else if (even) {
-    properties = ["even"]
-  }
-
-  const response = await fetch(`http://numbersapi.com/${Number(number)}/math`)
-  const funFact = await response.text()
-
-  res.status(200).json({
-    number: number,
-    is_prime: isPrime(number),
-    is_perfect: isPerfect(number),
-    properties: properties,
-    digit_sum: isDigitsSum(number),
-    fun_fact: funFact,
-  })
   } catch (error) {
     res.status(500).json({
       error: "Internal Server Error...",
