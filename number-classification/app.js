@@ -44,7 +44,7 @@ function isPerfect(num) {
   return num === sum
 }
 
-// a number whose sum of, each digit raised to the power of the 
+// a number whose sum of, each digit raised to the power of the
 // number of digits equals to that number.
 function isArmStrong(num) {
   const digits = num.split("") // these creates an array of strings
@@ -91,7 +91,7 @@ app.get("/api/classify-number", async (req, res) => {
       return res.status(400).json({
         number: null,
         error: true,
-        message: "You have not provided any number...",
+        // message: "You have not provided any number...",
       })
     }
 
@@ -99,7 +99,7 @@ app.get("/api/classify-number", async (req, res) => {
       return res.status(400).json({
         number: number,
         error: true,
-        message: "Please provide a valid number...",
+        // message: "Please provide a valid number...",
       })
     }
 
@@ -107,7 +107,7 @@ app.get("/api/classify-number", async (req, res) => {
       return res.status(400).json({
         number: number,
         error: true,
-        message: "Only valid positive numbers are accepted...",
+        // message: "Only valid positive numbers are accepted...",
       })
     }
 
