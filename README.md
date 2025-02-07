@@ -36,6 +36,7 @@ npm install
 ```
 
 5. Configure environment variables
+
 To run this project, you will need to create a `.env` file in the project directory and make sure it is included in the `.gitignore` file. Configure the following environment variables:
 
 ```env
