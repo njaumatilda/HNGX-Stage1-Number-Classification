@@ -1,5 +1,5 @@
 # HNG Stage 1 API
-This is a simple REST API project that provides a single GET endpoint which takes a number and returns interesting mathematical properties about it, along with a fun fact, in JSON format.
+This is a simple REST API project that provides a single GET endpoint which takes a number as a query parameter, and returns interesting mathematical properties about it, along with a fun fact, in JSON format.
 
 ## Features 
 + Provides the number's mathematical properties and fun fact
